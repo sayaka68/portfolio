@@ -1,0 +1,51 @@
+@use "../global" as global;
+
+.l-about {
+}
+
+.l-about__inner {
+}
+
+.l-about__title {
+}
+
+.l-about__body {
+	padding-block: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	@include global.mq(lg) {
+		padding-block: 64px;
+		flex-direction: row;
+		max-width: 980px;
+		margin-inline: auto;
+		gap: 48px;
+	}
+}
+
+.l-about__img {
+	@include global.mq(lg) {
+		flex: 0 0 45%;
+	}
+}
+
+.l-about__textContents {
+}
+
+.l-about__heading {
+	font-size: 20px;
+	font-weight: 700;
+
+	@include global.mq(lg) {
+		font-size: 28px;
+	}
+}
+
+.l-about__text {
+	margin-top: 12px;
+
+	@include global.mq(lg) {
+		margin-top: 20px;
+	}
+}

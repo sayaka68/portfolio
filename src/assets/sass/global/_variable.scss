@@ -1,0 +1,44 @@
+//　色
+$text-color: #333333;
+$black: #000000;
+$white: #ffffff;
+$pink: #eabeb4;
+$beige: #f3e9e2;
+$light-gray: #ebebef;
+
+//文字スタイル
+$fz-base: 16px;
+$fw-base: 500;
+$lh-base: 1.4;
+$ff-base: "Shippori Mincho", serif;
+
+$breakpoints: (
+	"xs": "screen and (min-width:1px) and ( max-width:370px)",
+	"sm": "not screen and (min-width:350px)",
+	"md": "screen and (min-width: 700px)",
+	"lg": "screen and (min-width: 950px)",
+	"xl": "screen and (min-width: 1024px)",
+	"xxl": "screen and (min-width: 1280px)",
+);
+
+// 重なり順の定義
+$layer: (
+	// ローディング
+	loading: 300,
+	// モーダル
+	modal: 100,
+	// ドロワー
+	drawer: 40,
+
+	// ヘッダー
+	header: 20,
+	// フッター
+	footer: 10,
+	// フローティング
+	floating: 5,
+	default: 1,
+	bg: -1
+);
+
+// 例 z-index: map.get(global.$layer, floating);
+//頭で @use "sass:map"; の記述も必要

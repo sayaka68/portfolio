@@ -1,0 +1,52 @@
+@use "../global" as global;
+
+.c-drawerButton {
+	background: var(--pink);
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	position: relative;
+	border: 1px solid var(--white);
+}
+
+.c-drawerButton__bar {
+	display: block;
+	width: 20px;
+	height: 2px;
+	border-radius: 999px;
+	background: var(--white);
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	transition: top 300ms 350ms ease, transform 300ms 50ms ease,
+		opacity 300ms 350ms ease;
+
+	&:first-child {
+		top: -12px;
+		animation: drawerIconAnim 3s;
+	}
+
+	&:last-child {
+		top: 12px;
+	}
+}
+
+.c-drawerButton.is-checked {
+	.c-drawerButton__bar {
+		transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+
+		&:nth-child(2) {
+			opacity: 0;
+		}
+
+		&:first-child {
+			top: 0;
+			transform: rotate(45deg);
+		}
+
+		&:last-child {
+			top: 0;
+			transform: rotate(-45deg);
+		}
+	}
+}

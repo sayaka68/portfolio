@@ -1,0 +1,30 @@
+@use "../global" as global;
+
+.p-headerNav {
+	padding-top: 128px;
+
+	@include global.mq(lg) {
+		padding-top: 0;
+	}
+}
+
+.p-headerNav__list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 40px;
+
+	@include global.mq(lg) {
+		flex-direction: row;
+		gap: 48px;
+	}
+}
+
+.p-headerNav__item {
+	font-weight: 700;
+	transition: transform 0.3s;
+
+	&:hover {
+		transform: translateY(-4px);
+	}
+}

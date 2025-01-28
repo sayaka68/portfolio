@@ -1,0 +1,22 @@
+@use "../global" as global;
+
+.l-footer {
+	background: var(--beige);
+	padding-block: 20px;
+	border-top: 1px solid var(--white);
+	// text-align: center;
+	border-radius: 0 0 30px 30px;
+
+	@include global.mq(lg) {
+		padding-block: 40px;
+		border-radius: 0 0 60px 60px;
+	}
+}
+
+.l-footer__copyright {
+	font-size: 12px;
+
+	@include global.mq(lg) {
+		font-size: 16px;
+	}
+}

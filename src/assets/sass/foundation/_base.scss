@@ -1,0 +1,42 @@
+@use "../global" as global;
+@use "../global/variable" as *;
+
+:root {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
+	--font-size: $fz-base; //16
+	--text-color: #{$text-color};
+	--white: #{$white};
+	--white-rgb: 255, 255, 255;
+	--black: #{$black};
+	--pink: #{$pink};
+	--pink-rgb: 234, 190, 180;
+	--beige: #{$beige};
+	--light-gray: #{$light-gray};
+	--light-gray-rgb: 235, 235, 239;
+
+	@include global.mq(lg) {
+		--font-size: 1.125em;
+		scroll-padding-top: 75px;
+	}
+}
+
+body {
+	font-family: #{$ff-base};
+	font-size: var(--font-size); //16px 幅950以上で18px(1.125em)
+	font-weight: #{$fw-base}; //500
+	color: var(--text-color);
+	line-height: #{$lh-base};
+}
+
+body.noScroll {
+	overflow: hidden;
+}
+
+a {
+	cursor: pointer;
+}
+
+p {
+	line-break: strict;
+}

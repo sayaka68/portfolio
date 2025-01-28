@@ -1,0 +1,41 @@
+@use "../global" as global;
+@use "sass:map";
+
+.c-sectionTitle {
+	font-size: 24px;
+	font-weight: 700;
+	position: relative;
+	z-index: map.get(global.$layer, floating);
+	width: fit-content;
+
+	@include global.mq(lg) {
+		font-size: 32px;
+		@include global.lh(46, 32);
+	}
+
+	&::after {
+		content: "";
+		display: inline-block;
+		border-radius: 999px;
+		width: 200px;
+		height: 3px;
+		background: var(--white);
+		position: absolute;
+		left: 0;
+		bottom: 6px;
+		z-index: map.get(global.$layer, bg);
+
+		@include global.mq(lg) {
+			width: 237px;
+			width: 150%;
+			height: 4px;
+			bottom: 9px;
+		}
+	}
+}
+
+.c-sectionTitle--lineBeige {
+	&::after {
+		background: var(--beige);
+	}
+}

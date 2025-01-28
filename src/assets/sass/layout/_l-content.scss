@@ -1,0 +1,9 @@
+@use "../global" as global;
+
+.l-content {
+	padding-block: 44px;
+
+	@include global.mq(lg) {
+		padding-block: 56px;
+	}
+}
