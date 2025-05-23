@@ -1,0 +1,80 @@
+@use "../global" as global;
+@use "sass:map";
+
+.l-mv {
+  padding-top: 170px;
+  padding-bottom: 220px;
+  position: relative;
+  overflow: hidden;
+  // clip-path: inset(0);
+
+  @include global.mq(lg) {
+    padding-top: 200px;
+    padding-bottom: 420px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 360px;
+    height: 360px;
+    background-image: url(/public/images/MV_image-min.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: fixed;
+    top: 60px;
+    right: -100px;
+    z-index: map.get(global.$layer, bg);
+    animation: rotation 48s linear infinite normal;
+
+    @include global.mq(md) {
+      width: 700px;
+      height: 700px;
+      top: -200px;
+      right: unset;
+      left: calc(50% - 150px);
+    }
+
+    @include global.mq(lg) {
+      width: 1000px;
+      height: 1000px;
+      right: unset;
+      left: calc(50% - 100px);
+      top: -310px;
+    }
+  }
+}
+
+.l-mv.bgDisplayNone {
+  &::before {
+    display: none;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.l-mv__inner {
+}
+
+.l-mv__caption {
+}
+
+.l-mv__title {
+  font-size: clamp(16px, 5vw, 30px);
+}
+
+.l-mv__text {
+}
