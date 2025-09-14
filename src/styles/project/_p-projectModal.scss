@@ -2,180 +2,199 @@
 @use "sass:map";
 
 .p-projectModal {
-	width: 95vw;
-	height: 95vh;
-	padding: 20px 16px;
-	border-radius: 16px;
-	opacity: 0;
-	visibility: hidden;
-	position: fixed;
-	background: var(--white);
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	transition: opacity 500ms, visibility 500ms;
-	z-index: map.get(global.$layer, modal);
+  display: none;
+  width: 95vw;
+  height: 95vh;
+  padding: 20px 16px;
+  border-radius: 16px;
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  background: var(--white);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: opacity 500ms, visibility 500ms;
+  z-index: map.get(global.$layer, modal);
 
-	// &.--responsive {
-	// 	.p-projectModal__img {
-	// 		@include global.mq(md) {
-	// 			position: relative;
+  // &.--responsive {
+  // 	.p-projectModal__img {
+  // 		@include global.mq(md) {
+  // 			position: relative;
 
-	// 			&::after {
-	// 				content: "responsive";
-	// 				border: 2px solid var(--pink);
-	// 				display: inline-block;
-	// 				font-family: global.$ff-base;
-	// 				padding: 4px 8px;
-	// 				border-radius: 8px;
-	// 				font-size: 14px;
-	// 				position: absolute;
-	// 				top: 0;
-	// 			}
-	// 		}
-	// 	}
-	// }
+  // 			&::after {
+  // 				content: "responsive";
+  // 				border: 2px solid var(--pink);
+  // 				display: inline-block;
+  // 				font-family: global.$ff-base;
+  // 				padding: 4px 8px;
+  // 				border-radius: 8px;
+  // 				font-size: 14px;
+  // 				position: absolute;
+  // 				top: 0;
+  // 			}
+  // 		}
+  // 	}
+  // }
 
-	@include global.mq(lg) {
-		width: 75vw;
-		padding: 40px 56px;
-		border-radius: 24px;
-	}
+  @include global.mq(lg) {
+    width: 75vw;
+    padding: 40px 56px;
+    border-radius: 24px;
+  }
 
-	&.is-open {
-		opacity: 1;
-		visibility: visible;
-	}
+  &.is-open {
+    // display: block;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .p-projectModal__title {
-	text-align: left;
+  text-align: left;
 }
 
 .p-projectModal__closeButton {
-	top: 20px;
-	right: 16px;
-	background: var(--pink);
-	width: 40px;
-	height: 40px;
-	border-radius: 999px;
-	position: relative;
-	border: 1px solid var(--white);
-	position: absolute;
-	cursor: pointer;
+  top: 20px;
+  right: 16px;
+  background: var(--pink);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  position: relative;
+  border: 1px solid var(--white);
+  position: absolute;
+  cursor: pointer;
 
-	@include global.mq(lg) {
-		top: 40px;
-		right: 56px;
-	}
+  @include global.mq(lg) {
+    top: 40px;
+    right: 56px;
+  }
 
-	&::before,
-	&::after {
-		content: "";
-		display: block;
-		width: 20px;
-		height: 2px;
-		border-radius: 999px;
-		background: var(--white);
-		position: absolute;
-		inset: 0;
-		margin: auto;
-	}
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--white);
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
 
-	&::before {
-		top: 0;
-		transform: rotate(45deg);
-	}
+  &::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
 
-	&::after {
-		top: 0;
-		transform: rotate(-45deg);
-	}
+  &::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
 }
 
 .p-projectModal__img {
-	margin-top: 24px;
-	width: 55%;
-	margin-inline: auto;
+  margin-top: 24px;
+  width: 55%;
+  margin-inline: auto;
 }
 
 .p-projectModal__body {
-	width: 90%;
-	margin-inline: auto;
-	text-align: left;
+  width: 90%;
+  margin-inline: auto;
+  text-align: left;
 
-	@include global.mq(lg) {
-		width: 80%;
-		position: relative;
-	}
+  @include global.mq(lg) {
+    width: 90%;
+    flex-grow: 1;
+    position: relative;
+  }
 
-	@include global.mq(xs) {
-		width: 100%;
-	}
+  @include global.mq(xs) {
+    width: 100%;
+  }
 }
 
 .p-projectModal__description {
-	margin-top: 16px;
-	font-size: 14px;
+  margin-top: 16px;
+  // font-size: 14px;
+  font-size: 18px;
 }
 
 .p-projectModal__detail {
-	margin-top: 16px;
-	padding-top: 16px;
-	font-size: 14px;
-	position: relative;
+  margin-top: 16px;
+  padding-top: 16px;
+  font-size: 14px;
+  position: relative;
 
-	&::before {
-		content: "";
-		display: inline-block;
-		width: 100%;
-		height: 1px;
-		background-image: linear-gradient(
-			to right,
-			transparent,
-			var(--pink) 50%,
-			transparent
-		);
-		background-repeat: no-repeat;
-		position: absolute;
-		top: 0;
-	}
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--pink) 50%,
+      transparent
+    );
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+  }
 }
 
 .p-projectModal__list {
 }
 
 .p-projectModal__item {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
-	& + & {
-		margin-top: 12px;
-	}
+  & + & {
+    margin-top: 12px;
+  }
 }
 
 .p-projectModal__head {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .p-projectModal__data {
-	padding-left: 8px;
-	font-weight: 400;
+  padding-left: 8px;
+  font-weight: 400;
 }
 
 .p-projectModal__button {
-	margin-top: 16px;
-	margin-left: auto;
+  margin-top: 16px;
+  margin-left: auto;
 
-	@include global.mq(lg) {
-		margin-top: 0;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-	}
+  @include global.mq(lg) {
+    margin-top: 0;
+    position: absolute;
+    bottom: 24px;
+    right: 0;
+  }
 
-	@include global.mq(xs) {
-		margin-top: 0;
-	}
+  @include global.mq(xs) {
+    margin-top: 0;
+  }
+}
+
+.p-projectModal__id {
+  margin-top: 8px;
+  margin-left: auto;
+  font-size: 12px;
+
+  @include global.mq(lg) {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }

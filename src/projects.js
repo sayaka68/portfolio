@@ -8,6 +8,7 @@ export const projects = [
       "Site statique réalisé pour apprendre les bases du codage, en mettant l’accent sur l’utilisation de CSS (comme Flexbox et positionnement des éléments) et de JavaScript pour ajouter des interactions simples, telles que le menu hamburger et un accordéon pour les questions fréquentes.",
     tools: ["Figma"],
     url: "https://oha.sayakatsuji.com",
+    password: "oha",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const projects = [
       "Site statique conçu sous forme de projet fictif, notamment pour pratiquer la gestion d’images décoratives adaptées à différentes tailles d'écran. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que deux carrousels d’images et la vérification des champs obligatoires du formulaire de contact avec affichage de messages d'erreur en cas de saisie incorrecte.",
     tools: ["Figma"],
     url: "https://onomichi.sayakatsuji.com",
+    password: "onomichi",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ export const projects = [
       "Site statique conçu pour pratiquer la mise en page et le développement responsive, sous forme de projet fictif. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que des animations d’apparition progressive au défilement et un carrousel d'images.",
     tools: ["Figma"],
     url: "https://sobolon.sayakatsuji.com",
+    password: "sobolon",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ export const projects = [
       "Site dynamique réalisé avec WordPress dans le cadre de mon apprentissage, visant à explorer les fonctionnalités interactives d’un site web. Ce projet m’a permis de mettre en pratique la gestion de contenu, l’intégration de plugins et la personnalisation des pages en fonction des besoins des utilisateurs.",
     tools: ["Wordpress", "Figma"],
     url: "https://opencafe.sayakatsuji.com/",
+    password: "opencafe",
   },
   {
     id: 5,

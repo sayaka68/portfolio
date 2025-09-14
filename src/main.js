@@ -241,7 +241,7 @@ function createProjectModal(project) {
   pModal.dataset.id = `${project.id}`;
 
   pModal.innerHTML = `
-    <h4 class="p-projectModal__title">Oha</h4>
+    <h4 class="p-projectModal__title">${project.name}</h4>
     <button
       class="p-projectModal__closeButton js-closeModal"
     ></button>
@@ -276,12 +276,13 @@ function createProjectModal(project) {
         href=${project.url}
         target="_blank"
         >voir le site</a
-      >
+        >
+        <p class="p-projectModal__id">ID: sayaka / password: ${project.password}</p>
       `
           : ""
       }
      
-      <!-- ID:sayaka pass:${project.name} -->
+      
     </div>
   `;
   return pModal;
