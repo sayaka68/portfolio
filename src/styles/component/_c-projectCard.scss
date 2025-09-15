@@ -2,44 +2,51 @@
 @use "sass:math";
 
 .c-projectCard {
-	background: var(--white);
-	box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
-	border-radius: 12px;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	cursor: pointer;
-	transition: background-color 0.3s;
+  background: var(--white);
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-inline: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
-	@include global.mq(lg) {
-		border-radius: 24px;
-	}
+  @include global.mq(md) {
+    height: 100%;
+  }
 
-	&:hover {
-		background-color: rgb(var(--pink-rgb), 0.7);
-		.c-projectCard__img {
-			transform: scale(1.02);
-		}
-	}
+  @include global.mq(lg) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 24px;
+  }
+
+  &:hover {
+    background-color: rgb(var(--pink-rgb), 0.7);
+    .c-projectCard__img {
+      transform: scale(1.02);
+    }
+  }
 }
 
 .c-projectCard__img {
-	width: math.div(360px, 450px) * 100%;
-	transition: transform 0.3s;
+  width: math.div(360px, 450px) * 100%;
+  transition: transform 0.3s;
 }
 
 .c-projectCard__body {
 }
 
 .c-projectCard__title {
-	color: var(--text-color);
-	font-size: 16px;
-	margin-top: 24px;
+  color: var(--text-color);
+  font-size: 16px;
+  margin-top: 24px;
 }
 
 .c-projectCard__text {
-	font-size: 12px;
-	margin-top: 4px;
+  font-size: 12px;
+  margin-top: 4px;
 }

@@ -2,12 +2,12 @@
 @use "sass:math";
 
 .l-works {
-	background: var(--beige);
-	border-radius: 30px;
+  background: var(--beige);
+  border-radius: 30px;
 
-	@include global.mq(lg) {
-		border-radius: 60px;
-	}
+  @include global.mq(lg) {
+    border-radius: 60px;
+  }
 }
 
 .l-works__inner {
@@ -17,32 +17,30 @@
 }
 
 .l-works__body {
-	@include global.mq(lg) {
-		max-width: 980px;
-		margin-inline: auto;
-	}
+  @include global.mq(lg) {
+    max-width: 980px;
+    margin-inline: auto;
+  }
 }
 
 .l-works__projects {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-	padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 32px;
 
-	@include global.mq(lg) {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		column-gap: 5rem;
-		row-gap: 3rem;
-		padding-top: 64px;
-	}
-
-	.c-worksCard {
-		flex-basis: 46%;
-	}
+  @include global.mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    column-gap: 5rem;
+    row-gap: 3rem;
+    padding-top: 64px;
+  }
 }
 
 .l-works__button {
-	margin-top: 3rem;
-	margin-left: auto;
+  margin-top: 3rem;
+  margin-left: auto;
 }

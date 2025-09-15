@@ -116,7 +116,14 @@ function renderProjectList() {
   // 新しい物から表示されるように、projects のコピーを作って id の大きい順にソート
   const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
 
-  sortedProjects.forEach((project) => {
+  // 先頭4件だけ取り出す
+  const latestProjects = sortedProjects.slice(0, 4);
+
+  const displayProject = location.pathname.includes("index.html")
+    ? latestProjects
+    : sortedProjects;
+
+  displayProject.forEach((project) => {
     const projectEl = createProject(project);
     const projectListArea = works.querySelector(".projectListArea");
     projectListArea.appendChild(projectEl);

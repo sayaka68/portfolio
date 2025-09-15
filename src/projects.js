@@ -28,8 +28,10 @@ export const projects = [
     image: "images/img_onomichi-min.png",
     langues: ["HTML", "CSS", "Javascript", "Swiper"],
     description:
-      "Site statique conçu sous forme de projet fictif, notamment pour pratiquer la gestion d’images décoratives adaptées à différentes tailles d'écran. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que deux carrousels d’images et la vérification des champs obligatoires du formulaire de contact avec affichage de messages d'erreur en cas de saisie incorrecte.",
+      // "Site statique conçu sous forme de projet fictif, notamment pour pratiquer la gestion d’images décoratives adaptées à différentes tailles d'écran. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que deux carrousels d’images et la vérification des champs obligatoires du formulaire de contact avec affichage de messages d'erreur en cas de saisie incorrecte.",
+      "Site statique fictif conçu pour m’exercer à l’adaptation responsive d’images décoratives et à l’intégration d’interactions dynamiques en JavaScript, comprenant deux carrousels d’images et la validation des champs obligatoires du formulaire de contact.",
     tools: ["Figma"],
+
     url: "https://onomichi.sayakatsuji.com",
     password: "onomichi",
   },
