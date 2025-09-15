@@ -10,19 +10,9 @@ export const projects = [
     url: "https://oha.sayakatsuji.com",
     password: "oha",
   },
+
   {
     id: 2,
-    name: "Snap Onomichi",
-    image: "images/img_onomichi-min.png",
-    langues: ["HTML", "CSS", "Javascript", "Swiper"],
-    description:
-      "Site statique conçu sous forme de projet fictif, notamment pour pratiquer la gestion d’images décoratives adaptées à différentes tailles d'écran. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que deux carrousels d’images et la vérification des champs obligatoires du formulaire de contact avec affichage de messages d'erreur en cas de saisie incorrecte.",
-    tools: ["Figma"],
-    url: "https://onomichi.sayakatsuji.com",
-    password: "onomichi",
-  },
-  {
-    id: 3,
     name: "Sobolon",
     image: "images/img_sobolon-min.png",
     langues: ["HTML", "CSS", "Javascript", "Swiper"],
@@ -31,6 +21,17 @@ export const projects = [
     tools: ["Figma"],
     url: "https://sobolon.sayakatsuji.com",
     password: "sobolon",
+  },
+  {
+    id: 3,
+    name: "Snap Onomichi",
+    image: "images/img_onomichi-min.png",
+    langues: ["HTML", "CSS", "Javascript", "Swiper"],
+    description:
+      "Site statique conçu sous forme de projet fictif, notamment pour pratiquer la gestion d’images décoratives adaptées à différentes tailles d'écran. J’ai également intégré des interactions dynamiques à l’aide de JavaScript, telles que deux carrousels d’images et la vérification des champs obligatoires du formulaire de contact avec affichage de messages d'erreur en cas de saisie incorrecte.",
+    tools: ["Figma"],
+    url: "https://onomichi.sayakatsuji.com",
+    password: "onomichi",
   },
   {
     id: 4,
@@ -45,6 +46,16 @@ export const projects = [
   },
   {
     id: 5,
+    name: "Shopping Cart",
+    image: "images/img_shopping-cart-min.png",
+    langues: ["HTML", "CSS", "Javascript"],
+    description:
+      "Ceci est ma première réalisation d’un panier simple en Vanilla JS. Cela m’a permis de gérer les informations des produits dans un fichier JavaScript et de les afficher dynamiquement dans le DOM, renforçant ainsi mes compétences en développement front-end.",
+    tools: ["Vite", "Figma"],
+    url: "https://sayaka68.github.io/Product-list-with-cart---Frontend-Mentor/",
+  },
+  {
+    id: 999,
     name: "Portfolio de Sayaka TSUJI",
     image: "images/img_portfolio-min.png",
     langues: ["HTML", "CSS", "Javascript"],

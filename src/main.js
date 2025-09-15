@@ -268,6 +268,7 @@ function createProjectModal(project) {
           </li>
         </ul>
       </div>
+     
       ${
         project.url
           ? `
@@ -277,8 +278,14 @@ function createProjectModal(project) {
         target="_blank"
         >voir le site</a
         >
-        <p class="p-projectModal__id">ID: sayaka / password: ${project.password}</p>
+       
       `
+          : ""
+      }
+      ${
+        project.password
+          ? `
+         <p class="p-projectModal__id">ID: sayaka / password: ${project.password}</p>`
           : ""
       }
      
