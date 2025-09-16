@@ -119,9 +119,11 @@ function renderProjectList() {
   // 先頭4件だけ取り出す
   const latestProjects = sortedProjects.slice(0, 4);
 
-  const displayProject = location.pathname.includes("index.html")
-    ? latestProjects
-    : sortedProjects;
+  const displayProject =
+    location.pathname === "/" || location.pathname.includes("index.html")
+      ? latestProjects
+      : sortedProjects;
+  console.log(displayProject);
 
   displayProject.forEach((project) => {
     const projectEl = createProject(project);
