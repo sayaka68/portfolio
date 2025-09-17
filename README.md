@@ -32,7 +32,7 @@ Ce site présente mes projets et compétences en développement web, principalem
 
 ## 📸 Captures d’écran
 
-| Section projets                 | Formulaire de contact           |
+| Section Réalisation             | Section à propos de moi         |
 | ------------------------------- | ------------------------------- |
 | ![](images/portfolio-works.png) | ![](images/portfolio-about.png) |
 
