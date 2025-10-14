@@ -1,0 +1,35 @@
+@use "../global" as global;
+@use "sass:map";
+
+.c-cookieModal {
+  display: none;
+  gap: 16px;
+  width: 95vw;
+  max-width: 1152px;
+  height: fit-content;
+  padding: 20px 16px;
+  border-radius: 16px;
+  position: fixed;
+  background: var(--white);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: opacity 500ms, visibility 500ms;
+  z-index: 1000;
+
+  &.is-open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include global.mq(md) {
+    width: 80vw;
+    // height: 95vh;
+    padding: 32px 32px;
+    border-radius: 24px;
+  }
+
+  button {
+    margin-inline-start: auto;
+  }
+}

@@ -10,4 +10,7 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    host: true, // localhost以外からもアクセス可能にする
+  },
 });

@@ -1,5 +1,70 @@
 import "./styles/style.scss";
 
+//クッキーへの同意バナーを出し、選んでもらう
+document.addEventListener("DOMContentLoaded", () => {
+  const consent = localStorage.getItem("cookie_consent");
+  if (!consent) {
+    showConsentBanner();
+  } else if (consent === "accepted") {
+    loadGA4();
+  }
+});
+
+function showConsentBanner() {
+  const banner = document.createElement("div");
+  banner.className = "c-cookieBanner";
+  banner.innerHTML = `
+    <p>Ce site utilise des cookies à des fins d’analyse.
+Acceptez-vous l’utilisation de ces cookies ?</p>
+    <button id="accept">Accepter</button>
+    <button id="reject">Refuser</button>
+    <button id="detail">En savoir plus</button>
+  `;
+  document.body.appendChild(banner);
+
+  const cookieModal = document.createElement("div");
+  cookieModal.className = "c-cookieModal";
+  cookieModal.innerHTML = `
+  <h1>Utilisation des cookies</h1>
+  <p>Ce site utilise Google Analytics 4 pour collecter des données anonymes sur la fréquentation.
+  Ces informations nous aident à améliorer le contenu du site.
+  Aucune donnée personnelle n’est enregistrée ni partagée avec des tiers.</p>
+  <button class="c-buttonPrimary --sm" id="closeCookieModal">fermer</button>
+  `;
+  document.body.appendChild(cookieModal);
+
+  document.getElementById("accept").addEventListener("click", () => {
+    localStorage.setItem("cookie_consent", "accepted");
+    loadGA4();
+    banner.remove();
+  });
+
+  document.getElementById("reject").addEventListener("click", () => {
+    localStorage.setItem("cookie_consent", "rejected");
+    banner.remove();
+  });
+
+  document.getElementById("detail").addEventListener("click", () => {
+    toggleOverlay();
+    toggleModalScroll();
+    cookieModal.classList.add("is-open");
+  });
+
+  document.getElementById("closeCookieModal").addEventListener("click", () => {
+    toggleOverlay();
+    toggleModalScroll();
+    cookieModal.classList.remove("is-open");
+  });
+}
+
+function loadGA4() {
+  if (document.getElementById("ga4-script")) return; // 二重読み込み防止。すでにあるなら何もしない。
+  const script = document.createElement("script");
+  script.id = "ga4-script";
+  script.src = "/ga4.js";
+  document.body.appendChild(script);
+}
+
 //ヘッダーの開閉とアイコンの切り替え(スマホ表示)
 
 const drawerButton = document.querySelector(".js-drawerButton");
@@ -208,11 +273,8 @@ function createBtnReturn() {
 
 function toggleOverlay() {
   const overLay = document.getElementById("js-overlay");
-  if (overLay.classList.contains("is-active")) {
-    overLay.classList.remove("is-active");
-  } else {
-    overLay.classList.add("is-active");
-  }
+  if (!overLay) return; // 存在しなければ何もしない
+  overLay.classList.toggle("is-active");
 }
 
 let savedScrollY = 0;
