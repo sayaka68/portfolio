@@ -108,17 +108,17 @@ window.addEventListener("scroll", function () {
   }
 });
 
-//worksセクション迄来たらmvの背景画像を非表示にする。じゃないとaboutでまた見えちゃう。
-window.addEventListener("scroll", function () {
-  const mv = document.querySelector(".l-mv");
-  const rectMv = mv.getBoundingClientRect();
-
-  if (rectMv.height < scrollY) {
-    mv.classList.add("bgDisplayNone"); // 背景画像非表示
-  } else {
-    mv.classList.remove("bgDisplayNone"); // 背景画像表示
-  }
+//mvセクションが画面から消えたら背景画像を非表示にする(index.htmlのみに適用)
+const mvSection = document.querySelector(".l-mv");
+const mvObserver = new IntersectionObserver((entries) => {
+  if (!entries[0].isIntersecting) {
+    mvSection.classList.add("bgDisplayNone");
+  } else mvSection.classList.remove("bgDisplayNone");
 });
+
+if (location.pathname === "/" || location.pathname.includes("index.html")) {
+  mvObserver.observe(mvSection);
+}
 
 //footer copyright 年数自動更新
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -163,8 +163,12 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // Affichage de la liste des projets en JS de manière dynamique
 //制作物一覧をJSで表示
 
+/* ================================================================================
+# works section 制作物カードの表示
+================================================================================ */
 import { projects } from "./projects";
 
+// work sectionの大枠を作る
 function renderProjectList() {
   const works = document.getElementById("works");
   works.innerHTML = `
@@ -184,6 +188,7 @@ function renderProjectList() {
   // 先頭4件だけ取り出す
   const latestProjects = sortedProjects.slice(0, 4);
 
+  //index.htmlならlatestProjectsで4件だけ、works.htmlならsortedProjectsを表示させる
   const displayProject =
     location.pathname === "/" || location.pathname.includes("index.html")
       ? latestProjects
@@ -294,7 +299,6 @@ function toggleModalScroll() {
       top: savedScrollY,
       behavior: "instant",
     });
-    console.log(savedScrollY);
   } else {
     // Ouvrir la modale : sauvegarde du scroll et blocage de l'écran
     // モーダルを開く：現在のスクロール位置を保存して画面を固定
@@ -327,15 +331,17 @@ function createProjectModal(project) {
         <ul class="p-projectModal__list">
           <li class="p-projectModal__item">
             <span class="p-projectModal__head"
-              >langages et technologies:</span
+              >langages:</span
             >
             <span class="p-projectModal__data"
-              >${project.langues}</span
+              >${project.langues.join(", ")}</span
             >
           </li>
           <li class="p-projectModal__item">
-            <span class="p-projectModal__head">outils:</span>
-            <span class="p-projectModal__data">${project.tools}</span>
+            <span class="p-projectModal__head">outils et technologies:</span>
+            <span class="p-projectModal__data">${project.tools.join(
+              ", "
+            )}</span>
           </li>
         </ul>
       </div>

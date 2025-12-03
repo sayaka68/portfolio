@@ -2,19 +2,19 @@
 @use "sass:map";
 
 .u-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	// height: 100%;
-	height: 0;
-	background: #000;
-	opacity: 0;
-	z-index: map.get(global.$layer, drawer); /* ドロワーの後ろに表示 */
-	transition: opacity 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // height: 100%;
+  height: 0;
+  background: #000;
+  opacity: 0;
+  z-index: map.get(global.$layer, drawer); /* ドロワーの後ろに表示 */
+  transition: opacity 0.5s;
 
-	&.is-active {
-		opacity: 0.3;
-		height: 100%;
-	}
+  &.is-active {
+    opacity: 0.3;
+    height: 100%;
+  }
 }
