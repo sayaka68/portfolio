@@ -1,5 +1,86 @@
 import "./styles/style.scss";
 
+/* ================================================================================
+# FOUC対策と初回アクセス時のみローディング画面表示
+================================================================================ */
+
+if (location.pathname === "/" || location.pathname === "/index.html") {
+  window.addEventListener("load", () => {
+    const isFirstLoad = sessionStorage.getItem("isFirstLoad");
+
+    const bodyVisible = function () {
+      document.body.classList.remove("hidden");
+    };
+    const removeSpinner = function () {
+      document.querySelector(".c-loader__box").classList.add("is-remove");
+    };
+    const removeLoading = function () {
+      document.querySelector(".c-loader").classList.add("is-remove");
+    };
+    const bodyOverflow = function () {
+      document.body.style.overflow = "visible";
+    };
+
+    if (!isFirstLoad) {
+      setTimeout(bodyVisible, 1000);
+      setTimeout(removeSpinner, 2500);
+      setTimeout(removeLoading, 2700);
+      setTimeout(bodyOverflow, 2900);
+
+      sessionStorage.setItem("isFirstLoad", true);
+    } else {
+      console.log("2回目");
+      removeSpinner();
+      removeLoading();
+      setTimeout(bodyVisible, 1000);
+      setTimeout(bodyOverflow, 1000);
+    }
+  });
+} else {
+  window.addEventListener("load", () => {
+    console.log("ホーム以外");
+    const visible = function () {
+      document.body.classList.remove("hidden");
+      document.body.style.overflow = "visible";
+    };
+
+    setTimeout(visible, 1000);
+  });
+}
+
+// window.addEventListener("load", () => {
+//   const isFirstLoad = sessionStorage.getItem("isFirstLoad");
+
+// const bodyVisible = function () {
+//   document.body.classList.remove("hidden");
+// };
+//   const removeSpinner = function () {
+//     document.querySelector(".c-loader__box").classList.add("is-remove");
+//   };
+
+//   const removeLoading = function () {
+//     document.querySelector(".c-loader").classList.add("is-remove");
+//   };
+
+//   const bodyOverflow = function () {
+//     document.body.style.overflow = "visible";
+//   };
+
+//   if (!isFirstLoad) {
+//     setTimeout(bodyVisible, 1000);
+//     setTimeout(removeSpinner, 2500);
+//     setTimeout(removeLoading, 2700);
+//     setTimeout(bodyOverflow, 2900);
+
+//     sessionStorage.setItem("isFirstLoad", true);
+//   } else {
+//     removeSpinner();
+//     removeLoading();
+//     setTimeout(bodyVisible, 1000);
+//     setTimeout(bodyOverflow, 1000);
+//   }
+// });
+
 //クッキーへの同意バナーを出し、選んでもらう
 document.addEventListener("DOMContentLoaded", () => {
   const consent = localStorage.getItem("cookie_consent");
@@ -11,25 +92,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showConsentBanner() {
+  const lang = document.documentElement.lang || "fr";
+  const texts = {
+    fr: {
+      mainText:
+        "Ce site utilise des cookies à des fins d’analyse. Acceptez-vous l’utilisation de ces cookies ?",
+      btnAgree: "Accepter",
+      btnReject: "Refuser",
+      more: "En savoir plus",
+      detail:
+        "Ce site utilise Google Analytics 4 pour collecter des données anonymes sur la fréquentation. Ces informations nous aident à améliorer le contenu du site. Aucune donnée personnelle n’est enregistrée ni partagée avec des tiers.",
+      detailTitle: "Utilisation des cookies",
+      btnClose: "fermer",
+    },
+    ja: {
+      mainText:
+        "このサイトでは分析目的でクッキーを使用しています。使用に同意しますか？",
+      btnAgree: "同意する",
+      btnReject: "拒否する",
+      more: "詳しく見る",
+      detail:
+        "このサイトは匿名のアクセスデータを収集するためにGoogle Analytics 4を使用しています。これらの情報はサイト内容の改善に役立てられ、個人情報は記録されません。",
+      detailTitle: "クッキーの使用に関して",
+      btnClose: "閉じる",
+    },
+  };
   const banner = document.createElement("div");
   banner.className = "c-cookieBanner";
   banner.innerHTML = `
-    <p>Ce site utilise des cookies à des fins d’analyse.
-Acceptez-vous l’utilisation de ces cookies ?</p>
-    <button id="accept">Accepter</button>
-    <button id="reject">Refuser</button>
-    <button id="detail">En savoir plus</button>
+    <p>${texts[lang].mainText}</p>
+    <button id="accept">${texts[lang].btnAgree}</button>
+    <button id="reject">${texts[lang].btnReject}</button>
+    <button id="detail">${texts[lang].more}</button>
   `;
   document.body.appendChild(banner);
 
   const cookieModal = document.createElement("div");
   cookieModal.className = "c-cookieModal";
   cookieModal.innerHTML = `
-  <h1>Utilisation des cookies</h1>
-  <p>Ce site utilise Google Analytics 4 pour collecter des données anonymes sur la fréquentation.
-  Ces informations nous aident à améliorer le contenu du site.
-  Aucune donnée personnelle n’est enregistrée ni partagée avec des tiers.</p>
-  <button class="c-buttonPrimary --sm" id="closeCookieModal">fermer</button>
+  <h1>${texts[lang].detailTitle}</h1>
+  <p>${texts[lang].detail}</p>
+  <button class="c-buttonPrimary --sm" id="closeCookieModal">${texts[lang].btnClose}</button>
   `;
   document.body.appendChild(cookieModal);
 
@@ -113,10 +216,16 @@ const mvSection = document.querySelector(".l-mv");
 const mvObserver = new IntersectionObserver((entries) => {
   if (!entries[0].isIntersecting) {
     mvSection.classList.add("bgDisplayNone");
-  } else mvSection.classList.remove("bgDisplayNone");
+  } else {
+    mvSection.classList.remove("bgDisplayNone");
+  }
 });
 
-if (location.pathname === "/" || location.pathname.includes("index.html")) {
+if (
+  location.pathname === "/" ||
+  location.pathname.endsWith("index.html") ||
+  location.pathname === "/ja/"
+) {
   mvObserver.observe(mvSection);
 }
 
@@ -170,10 +279,15 @@ import { projects } from "./projects";
 
 // work sectionの大枠を作る
 function renderProjectList() {
+  const lang = document.documentElement.lang || "fr";
+  const text = {
+    fr: "Réalisations",
+    ja: "Works",
+  };
   const works = document.getElementById("works");
   works.innerHTML = `
     <div class="l-inner">
-      <h3 class="c-sectionTitle">Réalisations</h3>
+      <h3 class="c-sectionTitle">${text[lang]}</h3>
       <div class="l-works__body">
         <div class="l-works__projects projectListArea"></div>
         <div class="viewMoreButtonArea" ></div>
@@ -190,7 +304,7 @@ function renderProjectList() {
 
   //index.htmlならlatestProjectsで4件だけ、works.htmlならsortedProjectsを表示させる
   const displayProject =
-    location.pathname === "/" || location.pathname.includes("index.html")
+    location.pathname === "/" || location.pathname.endsWith("index.html")
       ? latestProjects
       : sortedProjects;
   console.log(displayProject);
@@ -203,7 +317,7 @@ function renderProjectList() {
 
   let button;
 
-  if (location.pathname.includes("works.html")) {
+  if (location.pathname.endsWith("works.html")) {
     button = createBtnReturn();
   } else {
     button = createBtnViewMore();
@@ -261,18 +375,28 @@ function createProjectCard(project) {
 }
 
 function createBtnViewMore() {
+  const lang = document.documentElement.lang || "fr";
+  const text = {
+    fr: "voir plus",
+    ja: "一覧を見る",
+  };
   const button = document.createElement("a");
   button.className = "l-works__button c-buttonPrimary";
   button.setAttribute("href", "./works.html");
-  button.textContent = "voir plus";
+  button.textContent = text[lang];
   return button;
 }
 
 function createBtnReturn() {
+  const lang = document.documentElement.lang || "fr";
+  const text = {
+    fr: "retourner à la page d'acuille",
+    ja: "ホームページに戻る",
+  };
   const button = document.createElement("a");
   button.className = "l-works__button c-buttonPrimary";
   button.setAttribute("href", "./index.html");
-  button.textContent = "retourner à la page d'acuille";
+  button.textContent = text[lang];
   return button;
 }
 
@@ -311,6 +435,20 @@ function toggleModalScroll() {
 }
 
 function createProjectModal(project) {
+  const lang = document.documentElement.lang || "fr";
+  const text = {
+    fr: {
+      buttonText: "voir le site",
+      languesText: "languages",
+      toolsText: "outils et technologies",
+    },
+    ja: {
+      buttonText: "サイトを見る",
+      languesText: "使用言語",
+      toolsText: "ツールと技術",
+    },
+  };
+
   const pModal = document.createElement("div");
   pModal.className = "p-projectModal js-modal";
   pModal.dataset.id = `${project.id}`;
@@ -325,20 +463,20 @@ function createProjectModal(project) {
     </figure>
     <div class="p-projectModal__body">
       <p class="p-projectModal__description">
-        ${project.description}
+        ${project.description[lang]}
       </p>
       <div class="p-projectModal__detail">
         <ul class="p-projectModal__list">
           <li class="p-projectModal__item">
             <span class="p-projectModal__head"
-              >langages:</span
+              >${text[lang].languesText} :</span
             >
             <span class="p-projectModal__data"
               >${project.langues.join(", ")}</span
             >
           </li>
           <li class="p-projectModal__item">
-            <span class="p-projectModal__head">outils et technologies:</span>
+            <span class="p-projectModal__head">${text[lang].toolsText} :</span>
             <span class="p-projectModal__data">${project.tools.join(
               ", "
             )}</span>
@@ -353,7 +491,7 @@ function createProjectModal(project) {
         class="p-projectModal__button c-buttonPrimary --sm"
         href=${project.url}
         target="_blank"
-        >voir le site</a
+        >${text[lang].buttonText}</a
         >
        
       `

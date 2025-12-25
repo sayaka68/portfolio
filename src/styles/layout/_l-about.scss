@@ -10,42 +10,46 @@
 }
 
 .l-about__body {
-	padding-block: 32px;
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
+  padding-block: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-	@include global.mq(lg) {
-		padding-block: 64px;
-		flex-direction: row;
-		max-width: 980px;
-		margin-inline: auto;
-		gap: 48px;
-	}
+  @include global.mq(lg) {
+    padding-block: 64px;
+    flex-direction: row;
+    // max-width: 980px;
+    align-items: center;
+    margin-inline: auto;
+    gap: 48px;
+  }
 }
 
 .l-about__img {
-	@include global.mq(lg) {
-		flex: 0 0 45%;
-	}
+  @include global.mq(lg) {
+    flex: 0 0 40%;
+  }
 }
 
 .l-about__textContents {
 }
 
 .l-about__heading {
-	font-size: 20px;
-	font-weight: 700;
+  // font-size: 20px;
+  font-weight: 700;
+  --min-size: 20;
+  --max-size: 24;
+  font-size: var(--clamp-size);
 
-	@include global.mq(lg) {
-		font-size: 28px;
-	}
+  @include global.mq(lg) {
+    // font-size: 28px;
+  }
 }
 
 .l-about__text {
-	margin-top: 12px;
+  margin-top: 12px;
 
-	@include global.mq(lg) {
-		margin-top: 20px;
-	}
+  @include global.mq(lg) {
+    margin-top: 32px;
+  }
 }
