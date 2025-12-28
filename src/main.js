@@ -48,39 +48,6 @@ if (location.pathname === "/" || location.pathname === "/index.html") {
   });
 }
 
-// window.addEventListener("load", () => {
-//   const isFirstLoad = sessionStorage.getItem("isFirstLoad");
-
-// const bodyVisible = function () {
-//   document.body.classList.remove("hidden");
-// };
-//   const removeSpinner = function () {
-//     document.querySelector(".c-loader__box").classList.add("is-remove");
-//   };
-
-//   const removeLoading = function () {
-//     document.querySelector(".c-loader").classList.add("is-remove");
-//   };
-
-//   const bodyOverflow = function () {
-//     document.body.style.overflow = "visible";
-//   };
-
-//   if (!isFirstLoad) {
-//     setTimeout(bodyVisible, 1000);
-//     setTimeout(removeSpinner, 2500);
-//     setTimeout(removeLoading, 2700);
-//     setTimeout(bodyOverflow, 2900);
-
-//     sessionStorage.setItem("isFirstLoad", true);
-//   } else {
-//     removeSpinner();
-//     removeLoading();
-//     setTimeout(bodyVisible, 1000);
-//     setTimeout(bodyOverflow, 1000);
-//   }
-// });
-
 //クッキーへの同意バナーを出し、選んでもらう
 document.addEventListener("DOMContentLoaded", () => {
   const consent = localStorage.getItem("cookie_consent");

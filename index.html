@@ -38,27 +38,50 @@
           <h1 class="l-header__logo">
             <a href="/"><img src="/images/logo_pc.svg" alt="" /></a>
           </h1>
-          <nav class="l-header__nav p-headerNav js-headerNav">
-            <ul class="p-headerNav__list">
-              <li class="p-headerNav__item js-headerLink">
-                <a href="#works">Réalisations</a>
-              </li>
-              <li class="p-headerNav__item js-headerLink">
-                <a href="#about">A propos de moi</a>
-              </li>
-              <li class="p-headerNav__item js-headerLink">
-                <a href="#contact">Contact</a>
-              </li>
-              <li class="p-headerNav__item js-headerLink">
-                <a href="/ja/index.html">日本語</a>
-              </li>
-            </ul>
-          </nav>
-          <button class="l-header__drawerButton c-drawerButton js-drawerButton">
-            <span class="c-drawerButton__bar"></span>
-            <span class="c-drawerButton__bar"></span>
-            <span class="c-drawerButton__bar"></span>
-          </button>
+          <div class="l-header__navArea">
+            <nav class="l-header__nav p-headerNav js-headerNav">
+              <ul class="p-headerNav__list">
+                <li class="p-headerNav__item js-headerLink">
+                  <a href="#works">Réalisations</a>
+                </li>
+                <li class="p-headerNav__item js-headerLink">
+                  <a href="#about">A propos de moi</a>
+                </li>
+                <li class="p-headerNav__item js-headerLink">
+                  <a href="#contact">Contact</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="c-headerLang">
+              <ul class="c-headerLang__list">
+                <li class="c-headerLang__item is-active">
+                  <a class="c-headerLang__switch" href="/" lang="fr">
+                    <span class="c-headerLang__switchLong">Français</span>
+                    <span class="c-headerLang__switchShort" aria-hidden="true"
+                      >FR</span
+                    >
+                  </a>
+                </li>
+                <li class="c-headerLang__item">
+                  <a class="c-headerLang__switch" href="/ja/" lang="ja">
+                    <span class="c-headerLang__switchLong">日本語</span>
+                    <span class="c-headerLang__switchShort" aria-hidden="true"
+                      >JA</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- /c-headerLang -->
+            <button
+              class="l-header__drawerButton c-drawerButton js-drawerButton"
+            >
+              <span class="c-drawerButton__bar"></span>
+              <span class="c-drawerButton__bar"></span>
+              <span class="c-drawerButton__bar"></span>
+            </button>
+          </div>
+          <!-- /l-header__navArea -->
         </div>
       </header>
 

@@ -2,69 +2,79 @@
 @use "sass:map";
 
 .l-header {
-	overflow: hidden;
-	padding-block: 20px;
-	position: fixed;
-	width: 100%;
-	z-index: map.get(global.$layer, header);
-	transition: background-color 0.5s;
+  overflow: hidden;
+  padding-block: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: map.get(global.$layer, header);
+  transition: background-color 0.5s;
+  background: rgba(var(--white-rgb), 0.2);
 }
 
 .l-header.bgWhite {
-	background-color: rgba(var(--white-rgb), 0.95);
-	border-bottom: 1px solid var(--beige);
+  background-color: rgba(var(--white-rgb), 0.95);
+  border-bottom: 1px solid var(--beige);
 }
 
 .l-header__inner {
-	display: flex;
-	justify-content: space-between;
-
-	@include global.mq(lg) {
-		align-items: center;
-	}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .l-header__logo {
-	width: 200px;
-	flex-shrink: 0;
+  width: 200px;
+  flex-shrink: 0;
 
-	@include global.mq(lg) {
-		width: 237px;
-	}
+  @include global.mq(lg) {
+    width: 237px;
+  }
+
+  @include global.mq(xs) {
+    width: 180px;
+  }
+}
+
+.l-header__navArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @include global.mq(lg) {
+    gap: 40px;
+  }
 }
 
 .l-header__nav {
-	transform: translateX(100vw);
-	transition: transform 500ms 50ms, background 500ms 50ms;
-	position: fixed;
-	inset-inline: 0;
-	margin-inline: auto;
-	width: 100vw;
-	height: 100vh;
+  transform: translateX(100vw);
+  transition: transform 500ms 50ms, background 500ms 50ms;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 
-	@include global.mq(lg) {
-		position: relative;
-		transform: translateX(0);
-		width: auto;
-		height: auto;
-		margin: 0;
-	}
+  @include global.mq(lg) {
+    position: static;
+    transform: translateX(0);
+    width: auto;
+    height: auto;
+    margin: 0;
+  }
 }
 
 .l-header__nav.is-open {
-	transform: translateX(0);
-	background: rgba(var(--white-rgb), 0.95);
-	top: 0;
-	left: 0;
-	z-index: map.get(global.$layer, floating);
+  transform: translateX(0);
+  background: rgba(var(--white-rgb), 0.95);
+  z-index: map.get(global.$layer, floating);
 }
 
 .l-header__drawerButton {
-	flex-shrink: 0;
-	position: relative;
-	z-index: map.get(global.$layer, drawer);
+  flex-shrink: 0;
+  position: relative;
+  z-index: map.get(global.$layer, drawer);
 
-	@include global.mq(lg) {
-		display: none;
-	}
+  @include global.mq(lg) {
+    display: none;
+  }
 }

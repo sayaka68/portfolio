@@ -1,0 +1,69 @@
+@use "../global" as global;
+
+.c-headerLang__list {
+  display: flex;
+  position: relative;
+  font-size: 14px;
+
+  &::before {
+    content: "/";
+    // margin: 0 0.4em;
+    color: #4f5d73;
+    display: inline-block;
+    position: absolute;
+    left: 49%;
+
+    @include global.mq(lg) {
+      left: 56%;
+    }
+  }
+
+  @include global.mq(lg) {
+    font-size: 16px;
+  }
+}
+
+.c-headerLang__list li + li {
+  padding-left: 0.8em;
+}
+
+.c-headerLang__item {
+  color: #4f5d73;
+  position: relative;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+.c-headerLang__item.is-active {
+  &:hover {
+    transform: unset;
+  }
+  a {
+    pointer-events: none;
+  }
+
+  a span {
+    color: #5f7f6f;
+    // color: #c27a5a;
+    text-decoration: underline;
+  }
+}
+
+.c-headerLang__switch {
+}
+.c-headerLang__switchLong {
+  display: none;
+
+  @include global.mq(lg) {
+    display: inline-block;
+  }
+}
+.c-headerLang__switchShort {
+  display: inline-block;
+
+  @include global.mq(lg) {
+    display: none;
+  }
+}
