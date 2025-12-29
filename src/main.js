@@ -271,7 +271,9 @@ function renderProjectList() {
 
   //index.htmlならlatestProjectsで4件だけ、works.htmlならsortedProjectsを表示させる
   const displayProject =
-    location.pathname === "/" || location.pathname.endsWith("index.html")
+    location.pathname === "/" ||
+    location.pathname.endsWith("index.html") ||
+    location.pathname === "/ja/"
       ? latestProjects
       : sortedProjects;
   console.log(displayProject);
