@@ -18,7 +18,6 @@ Ce site présente mes projets et compétences en développement web, principalem
 - HTML / CSS / SCSS
 - JavaScript
 - Vite
-- WordPress
 
 ---
 
